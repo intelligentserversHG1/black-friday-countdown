@@ -13,9 +13,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 200px;          /* <= capped */
     margin: 0;
-    padding: 10px;
+    padding: 0;                 /* reduced */
     background-color: #ffffff; 
 }
 
@@ -23,7 +23,7 @@ body {
     text-align: center;
     font-family: 'Urbanist', sans-serif;
     color: #333; 
-    padding: 20px 0; 
+    padding: 10px 0;            /* reduced */
     background-color: #ffffff; 
     display: inline-block; 
 }
@@ -31,29 +31,29 @@ body {
 /* Define the column properties and margins */
 .unit-column {
     display: inline-block;
-    width: 104px; 
-    margin: 0 10px;
+    width: 90px; 
+    margin: 0 8px;
     text-align: center;
 }
 
 /* Top Row: Labels */
 .countdown-labels .unit-column {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px; 
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;         /* tighter */
 }
 
 /* Number Box */
 .number-box {
-    width: 80px; 
-    height: 80px; 
+    width: 60px; 
+    height: 60px;               /* smaller */
     background-color: #ffffff; 
     border: 2px solid #ccc; 
     border-radius: 12px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px; 
+    padding: 6px;               /* reduced */
     box-sizing: content-box; 
     display: flex;
     justify-content: center;
@@ -62,7 +62,7 @@ body {
 
 /* Numbers */
 .countdown-numbers span {
-    font-size: 70px; 
+    font-size: 48px;            /* reduced */
     font-weight: 900;
     line-height: 1; 
 }
@@ -116,7 +116,7 @@ function updateCountdown() {
     if (distance < 0) {
         clearInterval(countdownInterval);
         document.querySelector(".countdown-widget").innerHTML = "🎉 IT'S FRIDAY, NOV 28TH! 🎉";
-        document.querySelector(".countdown-widget").style.fontSize = "20px";
+        document.querySelector(".countdown-widget").style.fontSize = "18px";
     }
 }
 
