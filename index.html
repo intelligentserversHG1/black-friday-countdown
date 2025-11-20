@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Friday Countdown Widget</title>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@500;900&display=swap');
 
@@ -24,49 +31,44 @@ body {
 /* Define the column properties and margins */
 .unit-column {
     display: inline-block;
-    /* Set a fixed width equal to the box size including padding/border (80 + 10 + 10 + 2 + 2 = 104px) */
     width: 104px; 
-    margin: 0 10px; /* 10px Left and Right margin applied to the column */
-    text-align: center; /* **Ensures anything placed in this column is centered** */
+    margin: 0 10px;
+    text-align: center;
 }
 
-/* Top Row: Labels (Days, Hours, Minutes, Seconds) */
+/* Top Row: Labels */
 .countdown-labels .unit-column {
     font-size: 15px;
-    font-weight: 500; /* Medium weight */
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 10px; 
 }
 
-/* The container for the numbers (the box itself) */
+/* Number Box */
 .number-box {
-    /* Fixed size adjusted for 10px padding and 2px border on all sides */
     width: 80px; 
     height: 80px; 
-    
     background-color: #ffffff; 
     border: 2px solid #ccc; 
     border-radius: 12px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    
-    /* Padding and sizing */
     padding: 10px; 
     box-sizing: content-box; 
-    
-    /* Center the 70px number vertically and horizontally */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* The actual numbers inside the box */
+/* Numbers */
 .countdown-numbers span {
     font-size: 70px; 
-    font-weight: 900; /* Black weight */
+    font-weight: 900;
     line-height: 1; 
 }
 </style>
+</head>
+<body>
 
 <div class="countdown-widget">
     <div class="countdown-labels">
@@ -93,30 +95,24 @@ body {
 
 <script>
 function updateCountdown() {
-    // Target date and time: Friday, 28th November 2025, 00:00:00.000 in UK time
     const targetDateStr = '2025-11-28T00:00:00';
     const targetTime = new Date(targetDateStr).getTime();
     
-    // Get the current time
     const now = new Date().getTime();
     const distance = targetTime - now;
 
-    // Time calculations
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Pad single-digit numbers with a leading zero
     const formatTime = (time) => String(time).padStart(2, '0');
 
-    // Update the DOM elements
     document.getElementById("days-value").innerHTML = formatTime(days);
     document.getElementById("hours-value").innerHTML = formatTime(hours);
     document.getElementById("minutes-value").innerHTML = formatTime(minutes);
     document.getElementById("seconds-value").innerHTML = formatTime(seconds);
 
-    // If the countdown is over, display a message
     if (distance < 0) {
         clearInterval(countdownInterval);
         document.querySelector(".countdown-widget").innerHTML = "🎉 IT'S FRIDAY, NOV 28TH! 🎉";
@@ -124,9 +120,10 @@ function updateCountdown() {
     }
 }
 
-// Run the function once immediately
 updateCountdown();
-
-// Update the countdown every 1 second
 const countdownInterval = setInterval(updateCountdown, 1000); 
 </script>
+
+</body>
+</html>
+
