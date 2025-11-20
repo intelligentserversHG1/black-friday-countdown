@@ -9,13 +9,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@500;900&display=swap');
 
 body {
-    /* Center the widget in the iFrame */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 200px;          /* <= capped */
+    min-height: 200px;
     margin: 0;
-    padding: 0;                 /* reduced */
+    padding: 0;
     background-color: #ffffff; 
 }
 
@@ -23,38 +22,40 @@ body {
     text-align: center;
     font-family: 'Urbanist', sans-serif;
     color: #333; 
-    padding: 10px 0;            /* reduced */
+    padding: 10px 0;
     background-color: #ffffff; 
     display: inline-block; 
 }
 
-/* Define the column properties and margins */
+/* 🔧 Columns for both numbers + labels */
 .unit-column {
-    display: inline-block;
-    width: 60px; 
+    display: inline-flex;        /* allows flex centering */
+    justify-content: center;
+    align-items: center;
+    width: 60px;                 /* matches number box width */
     margin: 0 8px;
     text-align: center;
 }
 
-/* Top Row: Labels */
+/* Labels row */
 .countdown-labels .unit-column {
     font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    margin-bottom: 6px;         /* tighter */
+    margin-bottom: 6px;
 }
 
-/* Number Box */
+/* Number box */
 .number-box {
-    width: 60px; 
-    height: 60px;               /* smaller */
-    background-color: #ffffff; 
-    border: 2px solid #ccc; 
-    border-radius: 12px; 
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 6px;               /* reduced */
-    box-sizing: content-box; 
+    padding: 6px;
+    box-sizing: content-box;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,9 +63,9 @@ body {
 
 /* Numbers */
 .countdown-numbers span {
-    font-size: 48px;            /* reduced */
+    font-size: 48px;
     font-weight: 900;
-    line-height: 1; 
+    line-height: 1;
 }
 </style>
 </head>
@@ -77,6 +78,7 @@ body {
         <div class="unit-column" id="minutes-label">Minutes</div>
         <div class="unit-column" id="seconds-label">Seconds</div>
     </div>
+
     <div class="countdown-numbers">
         <div class="unit-column">
             <div class="number-box"><span id="days-value">00</span></div>
